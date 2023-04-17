@@ -1,0 +1,32 @@
+.modal {
+  &__form {
+    .form-control {
+      padding: 0.5rem 0;
+      border: none;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 900;
+        margin-bottom: 0.2rem;
+
+        p {
+          color: $gray-200;
+          font-weight: 100;
+          font-size: 1rem;
+        }
+      }
+
+      input[type="text"],
+      input[type="number"] {
+        border: 1px solid #dedede;
+        border-radius: 2px;
+        display: block;
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+      }
+    }
+  }
+}
