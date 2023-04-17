@@ -4,9 +4,7 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { Accordion, AccordionCollapse } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 
-const ExpenseCard = ({ type, data }) => {
-  const { name, amount } = data ? data : {};
-
+const ExpenseCard = ({ type, amount, description }) => {
   const CustomToggle = ({ children, eventKey }) => {
     const decoratedOnClick = useAccordionButton(eventKey);
     return <button onClick={decoratedOnClick}>{children}</button>;
@@ -33,7 +31,7 @@ const ExpenseCard = ({ type, data }) => {
       <Card className="expense-card">
         <Card.Header className="expense-card__header">
           <div className={`icon icon-${type}`} />
-          <p>{name}</p>
+          <p>{description}</p>
           <div className="details">
             <AmountElement />
             <CustomToggle eventKey="1">

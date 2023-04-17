@@ -10,31 +10,23 @@ export const initialState = {
       transactions: [
         {
           type: "income",
-          data: {
-            name: "Uber",
-            amount: 132.12,
-          },
+          description: "Uber",
+          amount: 132.12,
         },
         {
           type: "expense",
-          data: {
-            name: "HBO",
-            amount: 1282.12,
-          },
+          description: "HBO",
+          amount: 1282.12,
         },
         {
           type: "blank",
-          data: {
-            name: "Netflix",
-            amount: 12632.12,
-          },
+          description: "Netflix",
+          amount: -12632.12,
         },
         {
           type: "expense",
-          data: {
-            name: "HBO",
-            amount: 1282.12,
-          },
+          description: "HBO",
+          amount: 1282.12,
         },
       ],
     },
@@ -45,31 +37,23 @@ export const initialState = {
       transactions: [
         {
           type: "income",
-          data: {
-            name: "Uber",
-            amount: 132.12,
-          },
+          description: "Uber",
+          amount: 132.12,
         },
         {
           type: "expense",
-          data: {
-            name: "HBO",
-            amount: 1282.12,
-          },
+          description: "HBO",
+          amount: 1282.12,
         },
         {
           type: "blank",
-          data: {
-            name: "Netflix",
-            amount: 12632.12,
-          },
+          description: "Netflix",
+          amount: -132.12,
         },
         {
           type: "expense",
-          data: {
-            name: "HBO",
-            amount: 1282.12,
-          },
+          description: "HBO",
+          amount: 1282.12,
         },
       ],
     },
@@ -80,31 +64,23 @@ export const initialState = {
       transactions: [
         {
           type: "income",
-          data: {
-            name: "Uber",
-            amount: 132.12,
-          },
+          description: "Uber",
+          amount: 132.12,
         },
         {
           type: "expense",
-          data: {
-            name: "HBO",
-            amount: 1282.12,
-          },
+          description: "HBO",
+          amount: 1282.12,
         },
         {
           type: "blank",
-          data: {
-            name: "Netflix",
-            amount: 12632.12,
-          },
+          description: "Netflix",
+          amount: 12632.12,
         },
         {
           type: "expense",
-          data: {
-            name: "HBO",
-            amount: 1282.12,
-          },
+          description: "HBO",
+          amount: 1282.12,
         },
       ],
     },

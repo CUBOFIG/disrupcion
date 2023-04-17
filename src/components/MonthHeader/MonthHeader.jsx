@@ -1,6 +1,6 @@
 import { GlobalContext } from "contexts/Global.context";
 import { Nav, NavItem } from "react-bootstrap";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 
 const MonthHeader = () => {
   const { currentMonth, nextMonths, previousMonths, updateMonth } =
@@ -8,10 +8,6 @@ const MonthHeader = () => {
 
   const { lastMonth, penultimateMonth } = previousMonths;
   const { nextMonth, afterNextMonth } = nextMonths;
-
-  useEffect(() => {
-    console.log("MonthHeader");
-  }, [currentMonth]);
 
   return (
     <>

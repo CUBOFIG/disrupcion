@@ -1,13 +1,13 @@
 import { GlobalContext } from "contexts/Global.context";
 import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Modal, Button } from "react-bootstrap";
+import { Modal as ModalBS, Button } from "react-bootstrap";
 import moment from "moment";
 
-function Example({ isOpen, toggle }) {
-  const [text, setText] = useState("");
+function Modal({ isOpen, toggle }) {
+  const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState(moment().format("DD-MM-YYYY"));
+  const [date, setDate] = useState(new Date());
 
   const { addTransaction } = useContext(GlobalContext);
 
@@ -16,7 +16,7 @@ function Example({ isOpen, toggle }) {
 
     const newTransaction = {
       id: uuidv4(),
-      text,
+      description,
       amount: +amount,
       date: {
         day: moment(date).format("DD"),
@@ -30,7 +30,7 @@ function Example({ isOpen, toggle }) {
   };
 
   const onClear = () => {
-    setText("");
+    setDescription("");
     setAmount(0);
   };
 
@@ -38,19 +38,19 @@ function Example({ isOpen, toggle }) {
 
   return (
     <>
-      <Modal onHide={handleClose} show={isOpen} className="modal" centered>
-        <Modal.Header>
-          <Modal.Title>Agregar Movimiento</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      <ModalBS onHide={handleClose} show={isOpen} className="modal" centered>
+        <ModalBS.Header>
+          <ModalBS.Title>Agregar Movimiento</ModalBS.Title>
+        </ModalBS.Header>
+        <ModalBS.Body>
           <form onSubmit={onSubmit} className="modal__form">
             <div className="form-control">
               <label htmlFor="text">Concepto</label>
               <input
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Especifique el concepto de la transacción..."
                 type="text"
-                value={text}
+                value={description}
               />
             </div>
             <div className="form-control">
@@ -69,6 +69,8 @@ function Example({ isOpen, toggle }) {
                 id="start"
                 name="trip-start"
                 onChange={(e) => setDate(e.target.value)}
+                value={date}
+                max={new Date().toISOString().split("T")[0]}
               />
             </div>
 
@@ -84,10 +86,10 @@ function Example({ isOpen, toggle }) {
               </Button>
             </div>
           </form>
-        </Modal.Body>
-      </Modal>
+        </ModalBS.Body>
+      </ModalBS>
     </>
   );
 }
 
-export default Example;
+export default Modal;

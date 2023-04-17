@@ -38,16 +38,17 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     getTransactionsWithDate({ month: currentMonth, year });
+    console.log(currentMonth, year);
   }, [currentMonth, year, state.allTransactions]);
 
   const contextValue = {
     transactions: state.transactions,
+    addTransaction,
     currentMonth,
+    deleteTransaction,
     nextMonths,
     previousMonths,
     updateMonth,
-    deleteTransaction,
-    addTransaction,
   };
 
   return (
