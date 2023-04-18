@@ -57,7 +57,6 @@ const MonthBalance = () => {
             </CustomToggle>
           </div>
         </div>
-
         <AccordionCollapse eventKey="1">
           <div>DEMO COSITAS EXTRAS</div>
         </AccordionCollapse>

@@ -6,8 +6,6 @@ import moment from "moment";
 const ExpenseList = () => {
   const { transactions } = useContext(GlobalContext);
 
-  console.log(transactions);
-
   function formatDate(month, day) {
     const monthNumber = moment().month(month).month();
     const date = moment().set({ month: monthNumber, date: day });
@@ -32,27 +30,32 @@ const ExpenseList = () => {
     const dayA = parseInt(a.day);
     const dayB = parseInt(b.day);
 
-    if (dayA < dayB) {
-      return -1;
-    }
-    if (dayA > dayB) {
-      return 1;
-    }
+    if (dayA > dayB) return -1;
+
+    if (dayA < dayB) return 1;
+
     return 0;
   }
 
   return (
-    <div>
-      {transactions.sort(compareDates).map((item, index) => (
-        <div key={index}>
-          <div className="mb-2 mt-4">
-            <strong>{formatDate(item.month, item.day)}</strong>
+    <div className="expense-list">
+      {transactions.length > 0 ? (
+        transactions.sort(compareDates).map((item, index) => (
+          <div key={index}>
+            <div className="mb-2 mt-4">
+              <strong>{formatDate(item.month, item.day)}</strong>
+            </div>
+            {item.transactions.map((transaction, index) => (
+              <ExpenseCard key={`exp-${index}`} {...transaction} />
+            ))}
           </div>
-          {item.transactions.map((transaction, index) => (
-            <ExpenseCard key={`exp-${index}`} {...transaction} />
-          ))}
+        ))
+      ) : (
+        <div className="no-transactions-found">
+          <h2>No se encontraron transacciones para el mes seleccionado</h2>
+          <p>Cambia la fecha o agrega tu primera transaccion para esta fecha</p>
         </div>
-      ))}
+      )}
     </div>
   );
 };

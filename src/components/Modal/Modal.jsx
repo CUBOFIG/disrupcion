@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Modal as ModalBS, Button } from "react-bootstrap";
 import moment from "moment";
+import FormTransaction from "components/Form/FormTransaction";
 
 function Modal({ isOpen, toggle }) {
   const [description, setDescription] = useState("");
@@ -43,7 +44,7 @@ function Modal({ isOpen, toggle }) {
           <ModalBS.Title>Agregar Movimiento</ModalBS.Title>
         </ModalBS.Header>
         <ModalBS.Body>
-          <form onSubmit={onSubmit} className="modal__form">
+          {/* <form onSubmit={onSubmit} className="modal__form">
             <div className="form-control">
               <label htmlFor="text">Concepto</label>
               <input
@@ -73,7 +74,6 @@ function Modal({ isOpen, toggle }) {
                 max={new Date().toISOString().split("T")[0]}
               />
             </div>
-
             <div className="w-100">
               <Button
                 type="submit"
@@ -85,7 +85,8 @@ function Modal({ isOpen, toggle }) {
                 Agregar Movimiento
               </Button>
             </div>
-          </form>
+          </form> */}
+          <FormTransaction toggle={toggle} />
         </ModalBS.Body>
       </ModalBS>
     </>

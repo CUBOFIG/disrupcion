@@ -1,51 +1,85 @@
-import React from "react";
+// import { Formik, Form, Field } from "formik";
+import { GlobalContext } from "contexts/Global.context";
+import { useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
+// import Col from "react-bootstrap/Col";
+import moment from "moment";
 
-const FormTransaction = () => {
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import { Formik } from "formik";
+import { initialValues, validationSchema } from "./FormSchema";
+import FormField from "./FormField";
+
+const FormTransaction = ({ toggle }) => {
+  const { addTransaction } = useContext(GlobalContext);
+
+  const onSubmit = (event, { resetForm }) => {
+    console.log(resetForm);
+    const newTransaction = {
+      id: uuidv4(),
+      description: event.description,
+      amount: event.amount,
+      date: {
+        day: moment(event.date).format("DD"),
+        month: moment(event.date).format("MMMM"),
+        year: moment(event.date).format("YYYY"),
+      },
+    };
+
+    addTransaction(newTransaction);
+    console.log(newTransaction);
+    resetForm();
+    handleClose();
+  };
+
+  const handleClose = () => toggle(false);
+
   return (
     <>
-      <form onSubmit={onSubmit} className="modal__form">
-        <div className="form-control">
-          <label htmlFor="text">Concepto</label>
-          <input
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Especifique el concepto de la transacción..."
-            type="text"
-            value={description}
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="amount">Monto</label>
-          <input
-            id="amount"
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="$0.00"
-            type="number"
-            value={amount}
-          />
-        </div>
-        <div className="form-control">
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            onChange={(e) => setDate(e.target.value)}
-            value={date}
-            max={new Date().toISOString().split("T")[0]}
-          />
-        </div>
+      <Formik
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+        initialValues={initialValues}
+      >
+        {({ handleSubmit, handleChange, values, errors }) => (
+          <Form noValidate onSubmit={handleSubmit}>
+            <Row className="mb-3">
+              <FormField
+                value={values.description}
+                handleChange={handleChange}
+                error={errors.description}
+                type="text"
+                placeholder="Especifique el concepto de la transacción..."
+                name="description"
+                label="Concepto"
+              />
 
-        <div className="w-100">
-          <Button
-            type="submit"
-            variant="primary"
-            onClick={handleClose}
-            className="w-100 mt-3"
-            value={date}
-          >
-            Agregar Movimiento
-          </Button>
-        </div>
-      </form>
+              <FormField
+                extraText="$"
+                value={values.amount}
+                handleChange={handleChange}
+                error={errors.amount}
+                type="number"
+                placeholder="00.00"
+                name="amount"
+                label="Monto de la transacción"
+              />
+
+              <FormField
+                value={values.date}
+                handleChange={handleChange}
+                error={errors.date}
+                type="date"
+                name="date"
+                label="Fecha"
+              />
+            </Row>
+            <Button type="submit">Agregar Movimiento</Button>
+          </Form>
+        )}
+      </Formik>
     </>
   );
 };

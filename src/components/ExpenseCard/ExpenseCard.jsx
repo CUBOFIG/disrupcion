@@ -1,8 +1,9 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import { Accordion, AccordionCollapse } from "react-bootstrap";
+import { Accordion, AccordionCollapse, Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { CustomButton } from "components";
 
 const ExpenseCard = ({ type, amount, description }) => {
   const CustomToggle = ({ children, eventKey }) => {
@@ -40,7 +41,9 @@ const ExpenseCard = ({ type, amount, description }) => {
           </div>
         </Card.Header>
         <AccordionCollapse eventKey="1">
-          <Card.Body>Hello! I'm another body</Card.Body>
+          <Card.Body>
+            <Button className="delete-button w-100">Eliminar</Button>
+          </Card.Body>
         </AccordionCollapse>
       </Card>
     </Accordion>

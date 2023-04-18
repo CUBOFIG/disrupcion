@@ -3,7 +3,7 @@
   border-radius: 1rem;
   box-shadow: 2px 2px 1rem 1px $shadow-color;
   padding: 1rem;
-  
+    
   h1 {
     font-weight: 800;
   }
@@ -28,16 +28,16 @@
   }
 
   &__transaction-logs {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
 
     div:nth-child(1) {
-      width: 100%;
       display: flex;
       justify-content: space-between;
       margin-bottom: 1rem;
+      width: 100%;
 
       .income-logs {
         color: $gree-100;
@@ -64,11 +64,21 @@
     }
 
     .details {
+      align-items: center;
       color: $gray-300;
-      font-size: 0.9rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      font-size: 0.9rem;
+
+      button {
+        background-color: $white-primary;
+        border: none;
+        color: $gray-300;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 700;
+        margin-top: 0.5rem;
+      }
     }
   }
 }

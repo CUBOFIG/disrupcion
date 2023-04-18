@@ -18,7 +18,7 @@ const Home = () => {
         <MonthHeader />
         <div className="container">
           <MonthBalance />
-          <div className=" home__container">
+          <div className="home__container">
             <ExpenseList />
             <CustomButton
               message="Agregar Movimiento"

@@ -57,7 +57,8 @@ const Reducer = (state, action) => {
       const { allTransactions } = state;
 
       const transactions = allTransactions.filter(
-        (transaction) => transaction.month === month && transaction.year == year
+        (transaction) =>
+          transaction.month === month && +transaction.year === +year
       );
 
       return {
