@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Formik } from "formik";
 import { GlobalContext } from "contexts/Global.context";
 import { initialValues, validationSchema } from "./FormSchema";
@@ -9,6 +9,7 @@ import moment from "moment";
 
 const FormTransaction = ({ toggle }) => {
   const { addTransaction } = useContext(GlobalContext);
+  const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
   const onSubmit = (event, { resetForm }) => {
     const newTransaction = {
@@ -35,6 +36,7 @@ const FormTransaction = ({ toggle }) => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
         initialValues={initialValues}
+        validateOnChange={validateAfterSubmit}
       >
         {({ handleSubmit, handleChange, values, errors }) => (
           <Form noValidate onSubmit={handleSubmit}>
@@ -69,7 +71,13 @@ const FormTransaction = ({ toggle }) => {
                 label="Fecha"
               />
             </Row>
-            <Button type="submit" className="w-100">
+            <Button
+              type="submit"
+              className="w-100"
+              onClick={() => {
+                setValidateAfterSubmit(true);
+              }}
+            >
               Agregar Movimiento
             </Button>
           </Form>

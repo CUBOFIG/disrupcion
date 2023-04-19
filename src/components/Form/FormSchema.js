@@ -1,6 +1,11 @@
 import * as Yup from "yup";
+import moment from "moment";
 
-const initialValues = { amount: 0, date: "", description: "" };
+const initialValues = {
+  amount: 0,
+  date: moment().format("YYYY-MM-DD"),
+  description: "",
+};
 
 const validationSchema = Yup.object().shape({
   amount: Yup.number()

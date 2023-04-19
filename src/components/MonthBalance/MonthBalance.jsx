@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { Accordion, AccordionCollapse } from "react-bootstrap";
+import { Accordion, AccordionCollapse, Button } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { GlobalContext } from "contexts/Global.context";
 
 const MonthBalance = () => {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, deleteAllTransitions } = useContext(GlobalContext);
 
   const CustomToggle = ({ children, eventKey }) => {
     const decoratedOnClick = useAccordionButton(eventKey);
@@ -66,7 +66,12 @@ const MonthBalance = () => {
           </div>
         </div>
         <AccordionCollapse eventKey="1">
-          <div>DEMO COSITAS EXTRAS</div>
+          <Button
+            className="delete-button w-100"
+            onClick={deleteAllTransitions}
+          >
+            Eliminar
+          </Button>
         </AccordionCollapse>
       </div>
     </Accordion>

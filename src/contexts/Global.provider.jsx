@@ -16,7 +16,6 @@ export const GlobalProvider = ({ children }) => {
     useCalendar();
 
   const addTransaction = (transaction) => {
-    console.log(transaction);
     dispatch({
       type: ADD_TRANSACTION,
       payload: transaction,
