@@ -3,32 +3,25 @@ import {
   ADD_TRANSACTION,
   GET_TRANSACTIONS_WITH_DATE,
 } from "./types";
+import { v4 as uuidv4 } from "uuid";
 
 const Reducer = (state, action) => {
   switch (action.type) {
     case DELETE_TRANSACTION: {
-      const { allTransactions } = state;
-      const { date } = action.payload;
+      const { allTransactions, transactions: currentTransactions } = state;
+      const { id: currentId, idGroup } = action.payload;
 
-      const transactions = allTransactions.find(
-        (transaction) =>
-          transaction.month === date.month &&
-          +transaction.year === +date.year &&
-          +transaction.day === +date.day
+      const transactionGroup = currentTransactions.find(
+        ({ id }) => id === idGroup
       );
 
-      const newtransactions = transactions.transactions.filter(
-        (transaction) => transaction.id !== action.payload.id
+      const updatedTransactionGroup = transactionGroup.transactions.filter(
+        ({ id }) => id !== currentId
       );
 
-      const updatedObject = {
-        ...transactions,
-        transactions: newtransactions,
-      };
-
-      if (newtransactions.length === 0) {
-        const newTransactions = state.allTransactions.map(
-          (item) => item !== transactions
+      if (updatedTransactionGroup.length === 0) {
+        const newTransactions = allTransactions.filter(
+          ({ id }) => id !== idGroup
         );
 
         return {
@@ -37,13 +30,18 @@ const Reducer = (state, action) => {
         };
       }
 
-      const newTransactions = state.allTransactions.map((item) =>
-        item === transactions ? updatedObject : item
+      const newObjectDate = {
+        ...transactionGroup,
+        transactions: updatedTransactionGroup,
+      };
+
+      const updateAllTransactions = allTransactions.map((item) =>
+        item.id === idGroup ? newObjectDate : item
       );
 
       return {
         ...state,
-        allTransactions: newTransactions,
+        allTransactions: updateAllTransactions,
       };
     }
     case ADD_TRANSACTION:
@@ -76,6 +74,7 @@ const Reducer = (state, action) => {
           month: date.month,
           day: date.day,
           transactions: [action.payload],
+          id: uuidv4(),
         };
 
         return {
@@ -96,6 +95,10 @@ const Reducer = (state, action) => {
       return {
         ...state,
         transactions: transactions,
+        date: {
+          month,
+          year: +year,
+        },
       };
 
     default:

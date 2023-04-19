@@ -11,15 +11,14 @@ const FormTransaction = ({ toggle }) => {
   const { addTransaction } = useContext(GlobalContext);
 
   const onSubmit = (event, { resetForm }) => {
-    console.log(resetForm);
     const newTransaction = {
       id: uuidv4(),
       description: event.description,
       amount: event.amount,
       date: {
-        day: moment(event.date).format("DD"),
+        day: parseInt(moment(event.date).format("DD")),
         month: moment(event.date).format("MMMM"),
-        year: moment(event.date).format("YYYY"),
+        year: parseInt(moment(event.date).format("YYYY")),
       },
     };
 

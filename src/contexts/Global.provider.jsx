@@ -22,10 +22,10 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  const deleteTransaction = (id, date) => {
+  const deleteTransaction = (id, idGroup) => {
     dispatch({
       type: DELETE_TRANSACTION,
-      payload: { id, date },
+      payload: { id, idGroup },
     });
   };
 

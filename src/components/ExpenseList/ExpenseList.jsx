@@ -3,6 +3,7 @@ import { GlobalContext } from "contexts/Global.context";
 import { useContext } from "react";
 import moment from "moment";
 import notFound from "assets/images/not-found.svg";
+import { Accordion } from "react-bootstrap";
 
 const ExpenseList = () => {
   const { transactions } = useContext(GlobalContext);
@@ -39,7 +40,7 @@ const ExpenseList = () => {
   }
 
   return (
-    <div className="expense-list">
+    <Accordion className="expense-list">
       {transactions.length > 0 ? (
         transactions.sort(compareDates).map((item, index) => (
           <div key={index}>
@@ -47,7 +48,11 @@ const ExpenseList = () => {
               <strong>{formatDate(item.month, item.day)}</strong>
             </div>
             {item.transactions.map((transaction, index) => (
-              <ExpenseCard key={`exp-${index}`} {...transaction} />
+              <ExpenseCard
+                key={`exp-${index}`}
+                {...transaction}
+                idGroup={item.id}
+              />
             ))}
           </div>
         ))
@@ -58,7 +63,7 @@ const ExpenseList = () => {
           <p>Cambia la fecha o agrega tu primera transaccion para esta fecha</p>
         </div>
       )}
-    </div>
+    </Accordion>
   );
 };
 

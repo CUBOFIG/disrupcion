@@ -1,9 +1,9 @@
 import { createContext } from "react";
 
 export const initialState = {
-  transactions: [],
   allTransactions: [],
   date: null,
+  transactions: [],
 };
 
 export const GlobalContext = createContext(initialState);

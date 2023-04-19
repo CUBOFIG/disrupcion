@@ -1,11 +1,13 @@
-// Establecer estilos básicos para todo el documento
 * {
   margin: 0;
   padding: 0;
   font-family: 'PT Sans', sans-serif !important;
 }
 
-// Establecer estilos para los párrafos
+body {
+  background-color: $background-color !important;
+}
+
 p {
   margin: 0 !important;
   padding: 0 !important;
