@@ -4,6 +4,7 @@ import {
   GET_TRANSACTIONS_WITH_DATE,
 } from "./types";
 import { v4 as uuidv4 } from "uuid";
+import { act } from "react-dom/test-utils";
 
 const Reducer = (state, action) => {
   switch (action.type) {

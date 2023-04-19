@@ -1,7 +1,7 @@
 .expense-card {
   &__header {
     align-items: center;
-    background-color: #fff !important;
+    background-color: $white-primary !important;
     border-radius: 1rem !important;
     border: none !important;
     display: flex;
@@ -26,15 +26,15 @@
     }
 
     .icon-income {
-      background-color: red;
+      background-color: $red-icon;
+      box-shadow: 0 0 8px $red-icon;
+      border-radius: 50%;
     }
 
     .icon-expense {
-      background-color: blue;
-    }
-
-    .icon-blank {
-      background-color: gray;
+      background-color: $green-icon;
+      box-shadow: 0 0 8px $green-icon;
+      border-radius: 10%;
     }
   }
 

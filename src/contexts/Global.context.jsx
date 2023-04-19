@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export const initialState = {
   allTransactions: [],
-  date: null,
+  date: {},
   transactions: [],
 };
 

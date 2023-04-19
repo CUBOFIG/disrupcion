@@ -13,22 +13,30 @@ const MonthBalance = () => {
     return <button onClick={decoratedOnClick}>{children}</button>;
   };
 
-  const amounts = transactions.map((transaction) => transaction.transactions);
-  const amount = amounts.flat();
-  const amountt = amount.map((transaction) => transaction.amount);
-  const total = amountt.reduce((acc, item) => (acc += item), 0).toFixed(2);
+  const allTransactions = transactions
+    .map((transaction) => transaction.transactions)
+    .flat();
 
-  const positiveAmounts = amount.filter(
+  const allTransactionAmounts = allTransactions.map(
+    (transaction) => transaction.amount
+  );
+  const totalAmount = allTransactionAmounts
+    .reduce((acc, item) => acc + item, 0)
+    .toFixed(2);
+
+  const positiveTransactions = allTransactions.filter(
     (transaction) => transaction.amount > 0
   );
-  const negativeAmounts = amount.filter(
+  const negativeTransactions = allTransactions.filter(
     (transaction) => transaction.amount < 0
   );
-  const positiveTotal = positiveAmounts
-    .reduce((acc, item) => (acc += item.amount), 0)
+
+  const positiveTotalAmount = positiveTransactions
+    .reduce((acc, item) => acc + item.amount, 0)
     .toFixed(2);
-  const negativeTotal = Math.abs(
-    negativeAmounts.reduce((acc, item) => (acc += item.amount), 0)
+
+  const negativeTotalAmount = Math.abs(
+    negativeTransactions.reduce((acc, item) => acc + item.amount, 0)
   ).toFixed(2);
 
   return (
@@ -36,18 +44,18 @@ const MonthBalance = () => {
       <div className="month-balance mb-2">
         <div className="month-balance__current-balance">
           <p>Balance del mes</p>
-          <h1>${total}</h1>
+          <h1>${totalAmount}</h1>
         </div>
         <div className="month-balance__transaction-logs">
           <div>
             <div className="income-logs">
               <p>Ingresos</p>
-              <h1>+${positiveTotal}</h1>
+              <h1>+${positiveTotalAmount}</h1>
             </div>
             <div className="vertical-line"></div>
             <div className="expenses-logs">
               <p>Gastos</p>
-              <h1>-${negativeTotal}</h1>
+              <h1>-${negativeTotalAmount}</h1>
             </div>
           </div>
           <div className="details">
