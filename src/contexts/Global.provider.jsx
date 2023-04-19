@@ -22,10 +22,10 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  const deleteTransaction = (id) => {
+  const deleteTransaction = (id, date) => {
     dispatch({
       type: DELETE_TRANSACTION,
-      payload: id,
+      payload: { id, date },
     });
   };
 
@@ -38,7 +38,6 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     getTransactionsWithDate({ month: currentMonth, year });
-    console.log(currentMonth, year);
   }, [currentMonth, year, state.allTransactions]);
 
   const contextValue = {

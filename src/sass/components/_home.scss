@@ -1,20 +1,23 @@
 .home {
+  background-color: $background-color !important;
+
   .container {
     height: calc(100vh - 90px);
   }
 
   &__container {
-    position: relative;
-    overflow: auto;
-    height: calc(100% - 290px);
-    display: flex;
     align-items: center;
+    display: flex;
+    height: calc(100% - 290px);
+    overflow: auto;
+    position: relative;
     width: 100%;
 
     .custom-button {
-      position: fixed;
-      bottom: 1rem;
+      bottom: 0;
       left: 50%;
+      padding: 1rem 1.5rem !important;
+      position: fixed;
       transform: translate(-50%, -50%);
     };
   }

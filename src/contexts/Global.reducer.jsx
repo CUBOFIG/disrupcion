@@ -6,14 +6,46 @@ import {
 
 const Reducer = (state, action) => {
   switch (action.type) {
-    case DELETE_TRANSACTION:
-      return {
-        ...state,
-        transactions: state.transactions.filter(
-          (transaction) => transaction.id !== action.payload
-        ),
+    case DELETE_TRANSACTION: {
+      const { allTransactions } = state;
+      const { date } = action.payload;
+
+      const transactions = allTransactions.find(
+        (transaction) =>
+          transaction.month === date.month &&
+          +transaction.year === +date.year &&
+          +transaction.day === +date.day
+      );
+
+      const newtransactions = transactions.transactions.filter(
+        (transaction) => transaction.id !== action.payload.id
+      );
+
+      const updatedObject = {
+        ...transactions,
+        transactions: newtransactions,
       };
 
+      if (newtransactions.length === 0) {
+        const newTransactions = state.allTransactions.map(
+          (item) => item !== transactions
+        );
+
+        return {
+          ...state,
+          allTransactions: newTransactions,
+        };
+      }
+
+      const newTransactions = state.allTransactions.map((item) =>
+        item === transactions ? updatedObject : item
+      );
+
+      return {
+        ...state,
+        allTransactions: newTransactions,
+      };
+    }
     case ADD_TRANSACTION:
       const { date } = action.payload;
 

@@ -1,4 +1,3 @@
-export { default as AddTransactionModal } from "./AddTransactionModal/AddTransactionModal";
 export { default as CustomButton } from "./CustomButton/CustomButton";
 export { default as ExpenseCard } from "./ExpenseCard/ExpenseCard";
 export { default as ExpenseList } from "./ExpenseList/ExpenseList";

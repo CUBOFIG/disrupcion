@@ -4,7 +4,7 @@ import { GlobalContext } from "contexts/Global.context";
 import { initialValues, validationSchema } from "./FormSchema";
 import { Row, Form, Button } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
-import FormField from "./FormField";
+import FormField from "../FormField/FormField";
 import moment from "moment";
 
 const FormTransaction = ({ toggle }) => {
@@ -70,7 +70,9 @@ const FormTransaction = ({ toggle }) => {
                 label="Fecha"
               />
             </Row>
-            <Button type="submit">Agregar Movimiento</Button>
+            <Button type="submit" className="w-100">
+              Agregar Movimiento
+            </Button>
           </Form>
         )}
       </Formik>

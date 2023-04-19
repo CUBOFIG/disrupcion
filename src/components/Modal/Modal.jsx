@@ -1,17 +1,22 @@
-import { Modal as ModalBS } from "react-bootstrap";
+import {
+  Modal as ModalComponent,
+  ModalBody,
+  ModalHeader,
+  ModalTitle,
+} from "react-bootstrap";
 import FormTransaction from "components/Form/FormTransaction";
 
 function Modal({ isOpen, toggle }) {
   return (
     <>
-      <ModalBS centered onHide={() => toggle(false)} show={isOpen}>
-        <ModalBS.Header>
-          <ModalBS.Title>Agregar Movimiento</ModalBS.Title>
-        </ModalBS.Header>
-        <ModalBS.Body>
+      <ModalComponent centered onHide={() => toggle(false)} show={isOpen}>
+        <ModalHeader>
+          <ModalTitle>Agregar Movimiento</ModalTitle>
+        </ModalHeader>
+        <ModalBody>
           <FormTransaction toggle={toggle} />
-        </ModalBS.Body>
-      </ModalBS>
+        </ModalBody>
+      </ModalComponent>
     </>
   );
 }
