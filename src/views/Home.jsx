@@ -8,11 +8,11 @@ import {
 import { useState } from "react";
 
 const Home = () => {
-  const [show, showModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <Modal isOpen={show} toggle={showModal} />
+      <Modal isOpen={showModal} toggle={setShowModal} />
 
       <div className="home">
         <MonthHeader />
@@ -22,7 +22,7 @@ const Home = () => {
             <ExpenseList />
             <CustomButton
               message="Agregar Movimiento"
-              onInput={() => showModal((prevState) => !prevState)}
+              onInput={() => setShowModal((prevState) => !prevState)}
             />
           </div>
         </div>
