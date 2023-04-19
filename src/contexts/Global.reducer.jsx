@@ -2,9 +2,9 @@ import {
   DELETE_TRANSACTION,
   ADD_TRANSACTION,
   GET_TRANSACTIONS_WITH_DATE,
+  DELETE_ALL_ELEMENTS,
 } from "./types";
 import { v4 as uuidv4 } from "uuid";
-import { act } from "react-dom/test-utils";
 
 const Reducer = (state, action) => {
   switch (action.type) {
@@ -45,6 +45,11 @@ const Reducer = (state, action) => {
         allTransactions: updateAllTransactions,
       };
     }
+    case DELETE_ALL_ELEMENTS:
+      return {
+        ...state,
+        allTransactions: [],
+      };
     case ADD_TRANSACTION:
       const { date } = action.payload;
 

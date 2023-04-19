@@ -2,6 +2,7 @@ import {
   ADD_TRANSACTION,
   DELETE_TRANSACTION,
   GET_TRANSACTIONS_WITH_DATE,
+  DELETE_ALL_ELEMENTS,
 } from "./types";
 import { GlobalContext, initialState } from "./Global.context";
 import { useCalendar } from "hooks/useCalendar";
@@ -29,6 +30,12 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  const deleteAllElements = () => {
+    dispatch({
+      type: DELETE_ALL_ELEMENTS,
+    });
+  };
+
   const getTransactionsWithDate = (date) => {
     dispatch({
       type: GET_TRANSACTIONS_WITH_DATE,
@@ -42,12 +49,14 @@ export const GlobalProvider = ({ children }) => {
 
   const contextValue = {
     transactions: state.transactions,
+    allTransactions: state.allTransactions,
     addTransaction,
     currentMonth,
     deleteTransaction,
     nextMonths,
     previousMonths,
     updateMonth,
+    deleteAllElements,
   };
 
   return (

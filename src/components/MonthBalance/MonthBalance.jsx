@@ -6,11 +6,33 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { GlobalContext } from "contexts/Global.context";
 
 const MonthBalance = () => {
-  const { transactions, deleteAllTransitions } = useContext(GlobalContext);
+  const {
+    transactions,
+    deleteAllElements,
+    allTransactions: currentAllTransactions,
+  } = useContext(GlobalContext);
 
   const CustomToggle = ({ children, eventKey }) => {
     const decoratedOnClick = useAccordionButton(eventKey);
+
     return <button onClick={decoratedOnClick}>{children}</button>;
+  };
+
+  const DeleteAllTransactions = ({ children, eventKey }) => {
+    const decoratedOnClick = useAccordionButton(eventKey, (e) =>
+      deleteAllElements()
+    );
+
+    return (
+      <Button
+        variant="danger"
+        className="w-100"
+        onClick={decoratedOnClick}
+        disabled={currentAllTransactions.length <= 0}
+      >
+        {children}
+      </Button>
+    );
   };
 
   const allTransactions = transactions
@@ -66,12 +88,9 @@ const MonthBalance = () => {
           </div>
         </div>
         <AccordionCollapse eventKey="1">
-          <Button
-            className="delete-button w-100"
-            onClick={deleteAllTransitions}
-          >
-            Eliminar
-          </Button>
+          <DeleteAllTransactions>
+            Eliminar todas las transacciones
+          </DeleteAllTransactions>
         </AccordionCollapse>
       </div>
     </Accordion>
