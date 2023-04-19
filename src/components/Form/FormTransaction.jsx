@@ -1,16 +1,11 @@
-// import { Formik, Form, Field } from "formik";
-import { GlobalContext } from "contexts/Global.context";
 import { useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
-// import Col from "react-bootstrap/Col";
-import moment from "moment";
-
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import { Formik } from "formik";
+import { GlobalContext } from "contexts/Global.context";
 import { initialValues, validationSchema } from "./FormSchema";
+import { Row, Form, Button } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
 import FormField from "./FormField";
+import moment from "moment";
 
 const FormTransaction = ({ toggle }) => {
   const { addTransaction } = useContext(GlobalContext);
@@ -29,7 +24,6 @@ const FormTransaction = ({ toggle }) => {
     };
 
     addTransaction(newTransaction);
-    console.log(newTransaction);
     resetForm();
     handleClose();
   };

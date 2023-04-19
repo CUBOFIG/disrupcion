@@ -1,14 +1,12 @@
 .home {
-  height: 100vh;
-
   .container {
-    height: calc(100% - 90px);
+    height: calc(100vh - 90px);
   }
 
   &__container {
     position: relative;
     overflow: auto;
-    height: calc(100% - 270px);
+    height: calc(100% - 290px);
     display: flex;
     align-items: center;
     width: 100%;

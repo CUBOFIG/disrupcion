@@ -1,11 +1,11 @@
 .modal {
   &__form {
     .form-control {
-      padding: 0.5rem 0;
-      border: none;
       border-radius: 0;
+      border: none;
       display: flex;
       flex-direction: column;
+      padding: 0.5rem 0;
 
       label {
         font-weight: 900;
@@ -21,8 +21,8 @@
       input[type="text"],
       input[type="number"],
       input[type="date"] {
-        border: 1px solid #dedede;
         border-radius: 2px;
+        border: 1px solid $gray-100;
         display: block;
         font-size: 16px;
         padding: 10px;

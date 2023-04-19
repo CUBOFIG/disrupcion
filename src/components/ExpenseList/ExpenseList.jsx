@@ -2,6 +2,7 @@ import { ExpenseCard } from "components";
 import { GlobalContext } from "contexts/Global.context";
 import { useContext } from "react";
 import moment from "moment";
+import notFound from "assets/images/not-found.svg";
 
 const ExpenseList = () => {
   const { transactions } = useContext(GlobalContext);
@@ -52,7 +53,8 @@ const ExpenseList = () => {
         ))
       ) : (
         <div className="no-transactions-found">
-          <h2>No se encontraron transacciones para el mes seleccionado</h2>
+          <img src={notFound} alt="not-found" />
+          <h2>No se encontraron transacciones para este mes</h2>
           <p>Cambia la fecha o agrega tu primera transaccion para esta fecha</p>
         </div>
       )}

@@ -12,7 +12,7 @@ const MonthHeader = () => {
   return (
     <>
       <Nav className="month-header justify-content-center">
-        <div className="d-flex">
+        <div className="left-side d-flex">
           <NavItem>
             <div onClick={() => updateMonth(penultimateMonth)}>
               {penultimateMonth}
@@ -22,8 +22,8 @@ const MonthHeader = () => {
             <div onClick={() => updateMonth(lastMonth)}>{lastMonth}</div>
           </NavItem>
         </div>
-        <NavItem>{currentMonth}</NavItem>
-        <div className="d-flex">
+        <NavItem className="current-month">{currentMonth}</NavItem>
+        <div className="right-side d-flex">
           <NavItem>
             <div onClick={() => updateMonth(nextMonth)}>{nextMonth}</div>
           </NavItem>

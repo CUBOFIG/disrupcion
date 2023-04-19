@@ -1,0 +1,53 @@
+.month-header {
+  align-items: center;
+  background-color: $blue-100 !important;
+  border-radius: 0 0 1.5rem 1.5rem;
+  color: $white-primary;
+  font-weight: 400;
+  margin-bottom: 1rem !important;
+  padding: 1rem;
+  overflow: hidden;
+
+  > .nav-item {
+    color: $white-primary;
+    font-size: 1.6rem;
+    font-weight: 800;
+    width: auto;
+    text-align: center;
+    margin: 0 0.5rem;
+
+    > div {
+      color: $gray-200;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
+
+  .left-side,
+  .right-side {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+
+    .nav-item {
+      margin: 0 0.3rem;
+    }
+
+    &:first-child > .nav-item > div {
+      color: $gray-400;
+    }
+
+    &:last-child > .nav-item > div {
+      color: $gray-400;
+    }
+  }
+
+  .left-side {
+    justify-content: flex-end;
+  }
+
+  .right-side {
+    justify-content: flex-start;
+  }
+}
