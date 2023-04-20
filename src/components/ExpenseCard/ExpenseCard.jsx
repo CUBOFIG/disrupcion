@@ -1,4 +1,5 @@
-import { AccordionCollapse, Button } from "react-bootstrap";
+import { AccordionCollapse } from "react-bootstrap";
+import { CustomButton } from "components";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GlobalContext } from "contexts/Global.context";
@@ -48,9 +49,11 @@ const ExpenseCard = ({ amount, description, id, idGroup }) => {
       </Card.Header>
       <AccordionCollapse eventKey={id}>
         <Card.Body>
-          <Button className="delete-button w-100" onClick={deleteElement}>
-            Eliminar
-          </Button>
+          <CustomButton
+            className="delete-button w-100"
+            onInput={deleteElement}
+            message="Eliminar"
+          />
         </Card.Body>
       </AccordionCollapse>
     </Card>

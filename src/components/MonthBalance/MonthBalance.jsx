@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { Accordion, AccordionCollapse, Button } from "react-bootstrap";
+import { Accordion, AccordionCollapse } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { GlobalContext } from "contexts/Global.context";
+import { CustomButton } from "components";
 
 const MonthBalance = () => {
   const {
@@ -24,14 +25,12 @@ const MonthBalance = () => {
     );
 
     return (
-      <Button
-        variant="danger"
-        className="w-100"
-        onClick={decoratedOnClick}
+      <CustomButton
+        className="delete-button w-100"
+        onInput={decoratedOnClick}
         disabled={currentAllTransactions.length <= 0}
-      >
-        {children}
-      </Button>
+        message={children}
+      />
     );
   };
 

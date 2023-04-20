@@ -21,6 +21,7 @@ const Home = () => {
           <div className="home__container">
             <ExpenseList />
             <CustomButton
+              className="add-button"
               message="Agregar Movimiento"
               onInput={() => setShowModal((prevState) => !prevState)}
             />
