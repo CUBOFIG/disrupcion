@@ -1,9 +1,9 @@
 .home {
-  .container {
+  &__container {
     height: calc(100vh - 90px);
   }
 
-  &__container {
+  .transaction-container {
     align-items: center;
     display: flex;
     height: calc(100% - 290px);

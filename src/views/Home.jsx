@@ -16,9 +16,9 @@ const Home = () => {
 
       <div className="home">
         <MonthHeader />
-        <div className="container">
+        <div className="home__container container">
           <MonthBalance />
-          <div className="home__container">
+          <div className="transaction-container">
             <ExpenseList />
             <CustomButton
               className="add-button"
