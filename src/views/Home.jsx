@@ -15,8 +15,8 @@ const Home = () => {
       <Modal isOpen={showModal} toggle={setShowModal} />
 
       <div className="home">
-        <MonthHeader />
         <div className="home__container container">
+          <MonthHeader />
           <MonthBalance />
           <div className="transaction-container">
             <ExpenseList />

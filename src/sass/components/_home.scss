@@ -1,15 +1,21 @@
 .home {
+  height: 100%;
+
   &__container {
-    height: calc(100vh - 90px);
+    height: 100%;
+    display: flex;
+    padding-bottom: 2rem;
+    flex-direction: column;
   }
 
   .transaction-container {
     align-items: center;
     display: flex;
-    height: calc(100% - 290px);
+    height: 100%;
     overflow: auto;
     position: relative;
     width: 100%;
+    margin-top: 1rem;
 
     .add-button {
       background-color: $purple-100;
